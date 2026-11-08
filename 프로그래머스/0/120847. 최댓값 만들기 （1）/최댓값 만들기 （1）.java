@@ -1,12 +1,17 @@
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[] numbers) {
-        int answer = 0;
-        Arrays.sort(numbers);
+        int max1 = 0;
+        int max2 = 0;
         
-        answer = numbers[numbers.length - 1] * numbers[numbers.length - 2];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > max1) {
+                max2 = max1;
+                max1 = numbers[i];
+            } else if (max2 < numbers[i]) {
+                max2 = numbers[i];
+            }
+        }
         
-        return answer;
+        return max1 * max2;
     }
 }
